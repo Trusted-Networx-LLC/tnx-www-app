@@ -12,9 +12,9 @@ An AI agent that records or transcribes a call is recording a conversation betwe
 
 ## What an AI Agent on a Call Actually Triggers
 
-The federal wiretap statute makes intercepting a call's contents unlawful unless a party to the call has given prior consent, with one exception: consent does not protect an interception made for a criminal or tortious purpose ([18 U.S.C. § 2511](https://www.govinfo.gov/content/pkg/USCODE-2023-title18/html/USCODE-2023-title18-partI-chap119-sec2511.htm)). A disclosure at the top of the call is what creates that consent for most business calls.
+The federal wiretap statute makes intercepting a call's contents unlawful unless a party to the call has given prior consent, with one exception: consent does not protect an interception made for a criminal or tortious purpose ([18 U.S.C. § 2511](https://www.govinfo.gov/content/pkg/USCODE-2023-title18/html/USCODE-2023-title18-partI-chap119-sec2511.htm)). A disclosure at the top of the call is how you create that consent.
 
-Transcription is not a way around the rule. An agent that keeps no audio still captures the conversation's contents, and at least one state code names transcription separately from recording: Illinois makes it eavesdropping to "record, or transcribe" a private electronic communication without the consent of all parties ([720 ILCS 5/14-2](https://www.ilga.gov/legislation/ilcs/fulltext.asp?DocName=072000050K14-2)).
+Transcription is not a way around the rule. An agent that keeps no audio still captures the conversation's contents, and the statutes are written to reach the capture rather than the recording you keep: Washington's covers any device "designed to record and/or transmit said communication" ([RCW 9.73.030](https://app.leg.wa.gov/RCW/default.aspx?cite=9.73.030)).
 
 Where states require more than the federal floor, they say so in their own text:
 
