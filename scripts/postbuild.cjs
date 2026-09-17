@@ -75,7 +75,7 @@ async function ensureChromiumPath() {
     shell: process.platform === 'win32',
   });
   if (result.status !== 0) {
-    console.warn('[postbuild] Chrome download failed; pre-rendering will be skipped this build.');
+    console.warn('[postbuild] Chrome download failed. React-snap cannot run in this environment.');
     return null;
   }
   const downloaded = findChromeInCache(CHROME_CACHE_DIR);
@@ -83,25 +83,108 @@ async function ensureChromiumPath() {
   return downloaded;
 }
 
+/**
+ * The one and only condition that may bypass prerendering. Anything else
+ * (missing binary, failed download, launch error, timeout, or some other env
+ * var set in CI) must fail the build — a green build that ships meta-only
+ * shells is worse than a red one.
+ */
+const BYPASS_ENV = 'DISABLE_REACT_SNAP';
+const SNAPSHOT_MARKER = 'data-seo-ready';
+const ROOT_SHELL = require('path').join(process.cwd(), 'dist', 'index.html');
+
+/**
+ * The prerender gate. Every path that cannot produce prerendered HTML lands
+ * here and exits non-zero, so `npm run build` cannot go green without
+ * prerendering. The only escape hatch is the explicit, logged bypass.
+ */
+function failPrerender(reason) {
+  console.error('');
+  console.error('[postbuild] ================ PRERENDER GATE FAILURE ================');
+  console.error(`[postbuild] ${reason}`);
+  console.error('[postbuild] Refusing to emit a deployable build: prerendered HTML is what');
+  console.error('[postbuild] makes this site visible to non-JS crawlers and AI engines.');
+  console.error(`[postbuild] If skipping prerendering is genuinely intended, re-run with the`);
+  console.error(`[postbuild] explicit bypass ${BYPASS_ENV}=1 (the skip is logged loudly).`);
+  console.error('[postbuild] ======================================================');
+  console.error('');
+  process.exit(1);
+}
+
+/**
+ * Count HTML files under dist/ carrying the react-snap readiness marker.
+ * react-snap only produces that attribute by snapshotting a live browser DOM,
+ * so a non-zero count is evidence that prerendering actually happened.
+ */
+function countPrerenderedHtml(dir) {
+  const fs = require('fs');
+  const path = require('path');
+  let count = 0;
+  let visited = 0;
+  const walk = (current) => {
+    let entries;
+    try {
+      entries = fs.readdirSync(current, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      const full = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        walk(full);
+      } else if (entry.isFile() && entry.name.endsWith('.html')) {
+        visited += 1;
+        try {
+          if (fs.readFileSync(full, 'utf8').includes(SNAPSHOT_MARKER)) count += 1;
+        } catch {
+          /* unreadable file — cannot count as prerendered */
+        }
+      }
+    }
+  };
+  walk(dir);
+  return { count, visited };
+}
+
+/** Post-condition: react-snap said OK, so prerendered HTML must exist on disk. */
+function assertPrerenderOutput() {
+  const fs = require('fs');
+  const { count, visited } = countPrerenderedHtml(require('path').join(process.cwd(), 'dist'));
+  if (count < 1) {
+    failPrerender(
+      `react-snap exited 0 but produced no prerendered HTML: scanned ${visited} .html file(s) in dist/, none carried "${SNAPSHOT_MARKER}".`,
+    );
+  }
+  if (!fs.existsSync(ROOT_SHELL) || !fs.readFileSync(ROOT_SHELL, 'utf8').includes(SNAPSHOT_MARKER)) {
+    failPrerender(
+      `react-snap exited 0 but the root shell dist/index.html carries no "${SNAPSHOT_MARKER}" — the homepage would ship as a meta-only shell.`,
+    );
+  }
+  console.log(`[postbuild] Prerender assertion OK: ${count}/${visited} .html file(s) in dist/ carry "${SNAPSHOT_MARKER}", including dist/index.html.`);
+}
+
 async function main() {
-  // Run react-snap by default in every environment that has a Chromium
-  // available (falls back gracefully below when one isn't). Pre-rendered
-  // HTML is what makes the site visible to non-JS crawlers and AI engines —
-  // opt OUT with DISABLE_REACT_SNAP=1 rather than opting in.
-  const shouldRun = process.env.DISABLE_REACT_SNAP !== '1';
+  // Run react-snap by default in every environment. A Chromium that cannot be
+  // acquired, or react-snap failing to run, now FAILS the build (see
+  // failPrerender) — opt OUT explicitly with DISABLE_REACT_SNAP=1 instead.
+  const shouldRun = process.env[BYPASS_ENV] !== '1';
 
   if (!shouldRun) {
-    console.log('[postbuild] react-snap disabled via DISABLE_REACT_SNAP=1. Creating static blog route shells and patching SEO metadata.');
+    console.log('');
+    console.log('[postbuild] ============== PRERENDER BYPASSED ==============');
+    console.log(`[postbuild] ${BYPASS_ENV}=1 — react-snap is NOT running.`);
+    console.log('[postbuild] This output has NO prerendered HTML (meta-only shells).');
+    console.log(`[postbuild] ${BYPASS_ENV}=1 is the only supported way to skip, and it is`);
+    console.log('[postbuild] never silent — a skipped prerender is a non-production build.');
+    console.log('[postbuild] ================================================');
+    console.log('');
     runSeoPatch();
     return;
   }
 
   const chromiumPath = await ensureChromiumPath();
   if (!chromiumPath) {
-    console.log('[postbuild] No Chromium executable available; skipping react-snap and patching SEO metadata directly.');
-    console.log('[postbuild] WARNING: pages will ship as meta-only shells. Do not deploy this output to production.');
-    runSeoPatch();
-    return;
+    failPrerender('No Chromium executable available — react-snap cannot run.');
   }
 
   console.log(`[postbuild] Running react-snap with Chromium at: ${chromiumPath}`);
@@ -112,14 +195,16 @@ async function main() {
 
   if (typeof result.status === 'number') {
     if (result.status !== 0) {
-      process.exit(result.status);
+      failPrerender(`react-snap failed (exit code ${result.status}); no prerendered build was produced.`);
     }
+    assertPrerenderOutput();
     runSeoPatch();
     return;
   }
 
-  console.error('[postbuild] react-snap did not return an exit code.');
-  process.exit(1);
+  failPrerender(
+    `react-snap did not return an exit code (spawn error: ${result.error?.message || 'unknown'}).`,
+  );
 }
 
 main().catch((error) => {
