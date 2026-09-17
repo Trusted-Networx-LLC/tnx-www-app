@@ -105,14 +105,9 @@ async function main() {
   }
 
   console.log(`[postbuild] Running react-snap with Chromium at: ${chromiumPath}`);
-  const result = spawnSync(npxCommand, ['react-snap'], {
+  const result = spawnSync(process.execPath, [require.resolve('./run-react-snap.cjs'), chromiumPath], {
     stdio: 'inherit',
-    env: {
-      ...process.env,
-      PUPPETEER_EXECUTABLE_PATH: chromiumPath,
-      CHROME_BIN: chromiumPath,
-    },
-    shell: process.platform === 'win32',
+    env: process.env,
   });
 
   if (typeof result.status === 'number') {
