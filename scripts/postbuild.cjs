@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { existsSync } = require('fs');
 const { spawnSync } = require('child_process');
+const npxCommand = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 
 function runSeoPatch() {
   const patchResult = spawnSync(process.execPath, [require.resolve('./patch-prerendered-seo.cjs')], {
@@ -68,9 +69,10 @@ async function ensureChromiumPath() {
   }
 
   console.log('[postbuild] No Chromium in this environment — downloading Chrome into node_modules/.cache/puppeteer (persisted by Netlify build cache)...');
-  const result = spawnSync('npx', ['puppeteer', 'browsers', 'install', 'chrome'], {
+  const result = spawnSync(npxCommand, ['puppeteer', 'browsers', 'install', 'chrome'], {
     stdio: 'inherit',
     env: { ...process.env, PUPPETEER_CACHE_DIR: CHROME_CACHE_DIR },
+    shell: process.platform === 'win32',
   });
   if (result.status !== 0) {
     console.warn('[postbuild] Chrome download failed; pre-rendering will be skipped this build.');
@@ -103,13 +105,14 @@ async function main() {
   }
 
   console.log(`[postbuild] Running react-snap with Chromium at: ${chromiumPath}`);
-  const result = spawnSync('npx', ['react-snap'], {
+  const result = spawnSync(npxCommand, ['react-snap'], {
     stdio: 'inherit',
     env: {
       ...process.env,
       PUPPETEER_EXECUTABLE_PATH: chromiumPath,
       CHROME_BIN: chromiumPath,
     },
+    shell: process.platform === 'win32',
   });
 
   if (typeof result.status === 'number') {
