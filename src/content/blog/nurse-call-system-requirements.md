@@ -20,7 +20,7 @@ Those two sections are the floor for a certified building. State licensing rules
 
 Two sentences in the long-term care rule carry most of the weight for a device like this. The first requires the facility to "maintain all mechanical, electrical, and patient care equipment in safe operating condition" ([42 CFR § 483.90(d)(2)](https://www.ecfr.gov/current/title-42/section-483.90)). The second governs emergency power: an emergency electrical system must supply power at least for lighting all entrances and exits, for "equipment to maintain the fire detection, alarm, and extinguishing systems," and for life support systems when the normal electrical supply is interrupted ([42 CFR § 483.90(c)(1)](https://www.ecfr.gov/current/title-42/section-483.90)).
 
-Read together, they settle the argument that stalls so many nurse call projects. The regulation treats the system as patient care equipment that has to be maintained in safe operating condition, and the emergency-power sentence draws its line at fire detection, alarm and extinguishing equipment plus life support systems. Whether a particular nurse call path must ride the generator is a question for your engineer, your authority having jurisdiction and your licensing surveyor — not a default to assume in either direction. What is not open to interpretation is the maintenance record.
+Read together, they draw the line that matters for a nurse call system. The regulation treats the system as patient care equipment that has to be maintained in safe operating condition, and the emergency-power sentence draws its line at fire detection, alarm and extinguishing equipment plus life support systems. Whether a particular nurse call path must ride the generator is a question for your engineer, your authority having jurisdiction and your licensing surveyor — not a default to assume in either direction. What is not open to interpretation is the maintenance record.
 
 ## The Equipment Standard: What ANSI/UL 1069 Covers
 
@@ -32,7 +32,7 @@ That separation is where nurse call migrations get messy. Swapping a controller 
 
 If your nurse call design uses an analog line for one specific job — reaching an off-site monitoring center, a pager gateway, or a dialer that summons help when the desk is empty — then that line is the part of the system nobody at the facility controls. The nurse call hardware can be in perfect order and the signal still stops at the demarcation point.
 
-The FCC's network-change rules define a copper retirement as the removal or disabling of copper loops, subloops, or the feeder portion of such loops or subloops, or their replacement with fiber-to-the-home or fiber-to-the-curb loops, and require the incumbent carrier to give public notice of any network change that will result in one ([47 CFR § 51.325](https://www.ecfr.gov/current/title-47/section-51.325)). For a facility with a nurse call path on copper, that carrier notice is the first hard date on the project calendar — and it typically arrives long after the equipment was installed and certified.
+The FCC's network-change rules define a copper retirement as the removal or disabling of copper loops, subloops, or the feeder portion of such loops or subloops, or their replacement with fiber-to-the-home or fiber-to-the-curb loops, and require the incumbent carrier to give public notice of any network change that will result in one ([47 CFR § 51.325](https://www.ecfr.gov/current/title-47/section-51.325)). For a facility with a nurse call path on copper, that carrier notice is the first hard date on the project calendar.
 
 ## Testing and Documentation: What a Surveyor Will Ask For
 
@@ -48,7 +48,7 @@ A test result you can produce a year later settles a survey question. A system t
 
 ## How to Sequence a Nurse Call Migration
 
-Two orderings show up in practice, and the choice usually comes down to budget cycles more than technology: replace the nurse call system outright, or keep the field devices and change the path they use to signal. Where the second option fits, it lets you retire the copper dependency now and give the capital replacement its own project ([the voice paths we design and manage across a portfolio](/voice-solutions)).
+There are two orderings to choose between: replace the nurse call system outright, or keep the field devices and change the path they use to signal. Where the second option fits, it lets you retire the copper dependency now and give the capital replacement its own project ([the voice paths we design and manage across a portfolio](/voice-solutions)).
 
 Three things need to happen in order regardless of which route you take: inventory every circuit the system touches before anyone cuts one; put in writing which components are replaced and which stay; and test the full path — station to annunciator to off-site — after the cutover, not just the components that changed. It also helps to know how much of your estate still depends on copper before a carrier makes the decision for you ([check copper-sunset risk across your sites](/tools/copper-sunset-risk)).
 
