@@ -23,7 +23,7 @@ A state's authority shows up elsewhere: in a commission's service-quality and co
 
 The April 2026 order, [91 FR 20913](https://www.federalregister.gov/documents/2026/04/20/2026-07622/reducing-barriers-to-network-improvements-and-service-changes), changed the filing side. Adopted March 26, 2026 in WC Docket Nos. 25-208 and 25-209 as FCC 26-19, it eliminates all filing requirements in the network change disclosure rules and the Commission's public-notice and objection process for short-term network changes and copper retirements, codifying relief the Wireline Competition Bureau had already granted. Carriers must still post public notice through industry fora, industry publications or a publicly accessible website — reachable rather than behind a paywall. Direct notice of copper retirements and short-term network changes still goes to directly interconnected telephone exchange service providers and to 911 service providers.
 
-The order is effective May 20, 2026 except for the instructions amending §§ 51.329 and 51.333, which are delayed indefinitely until the Commission finishes reviewing the information collections.
+The order is effective May 20, 2026 except for the instructions amending §§ 51.329, 51.333, 63.60, 63.62, 63.63, 63.71 and 63.602, which are delayed indefinitely until the Commission finishes reviewing the information collections.
 
 ## What a State Commission Can Still Require
 
