@@ -9,7 +9,7 @@ readTime: "6 min read"
 image: "/blog-images/cellular-fire-alarm-monitoring-requirements.png"
 ---
 
-Cellular fire alarm monitoring requirements are not one rule you satisfy once. They come from four separate places: the listing standard behind the control unit and the communicator that sends its signal, the listing standard behind the central station that receives it, the federal carrier rules that govern the copper path being switched off, and the code edition your fire marshal enforces. Moving a signal path to cellular changes the transport. It does not move any of those four obligations.
+Cellular fire alarm monitoring requirements are not one rule you satisfy once. They come from four separate places: the listing standard behind the control unit and the communicator that sends its signal, the listing standard behind the central station that receives it, the federal carrier rules that govern the copper path being switched off, and the code edition your fire marshal enforces. Moving a signal path to cellular changes the transport, not any of those four obligations.
 
 ## What Are the Cellular Fire Alarm Monitoring Requirements?
 
