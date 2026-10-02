@@ -71,3 +71,18 @@
     display: none;
   }
 }
+
+/* --- TNX CRM form embeds ---
+   The form is cross-origin, so its height cannot be measured from here. Declare it: one value
+   for desktop, one for phone width (the fields stack and the form grows). A single value would
+   either clip the stacked layout or leave a band of empty space. The values come from
+   `src/lib/crm-forms.ts`, measured against the live forms. */
+.crm-form-embed iframe {
+  height: var(--crm-form-height, 900px);
+}
+
+@media (max-width: 640px) {
+  .crm-form-embed iframe {
+    height: var(--crm-form-height-phone, 1400px);
+  }
+}

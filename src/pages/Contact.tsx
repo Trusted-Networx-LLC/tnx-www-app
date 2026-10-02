@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const contactInfo = [
   { label: 'Phone', value: '305-498-7530', href: 'tel:+13054987530' },
@@ -55,7 +55,7 @@ const Contact = () => (
             <h2 className="font-display text-display-h2 font-semibold text-ink">Get in touch</h2>
             <p className="mt-2 text-body">Fill out the form below and we&apos;ll get back to you shortly.</p>
             <div className="mt-8">
-              <MultiStepForm preset="contact" />
+              <CrmFormEmbed form="contact" variant="bare" />
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5">

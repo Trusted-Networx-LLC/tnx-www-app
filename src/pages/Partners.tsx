@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const whatYouGet = [
   { n: '01', title: 'White-label telecom + AI', desc: 'Sell under your brand. Your customers see you, not us — every deliverable, invoice, and support touch is yours.' },
@@ -156,7 +156,7 @@ const Partners = () => (
             </p>
           </div>
           <div className="col-span-12 lg:col-span-7">
-            <MultiStepForm preset="partners" />
+            <CrmFormEmbed form="contact" variant="bare" />
           </div>
         </div>
       </div>

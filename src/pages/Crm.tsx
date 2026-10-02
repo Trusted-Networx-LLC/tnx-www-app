@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
 import ProductVideo from '../components/ProductVideo';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const capabilities = [
   { n: '01', title: 'Three channels, one pipeline view', body: 'Direct customers, agents, and resellers each get the right stages and commission fields.' },
@@ -195,7 +195,7 @@ const Crm = () => {
             </div>
             <div className="col-span-12 lg:col-span-7">
               <div className="rounded-lg border border-divider bg-navy-900 p-8">
-                <MultiStepForm preset="crm" />
+                <CrmFormEmbed form="contact" variant="bare" />
               </div>
             </div>
           </div>

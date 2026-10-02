@@ -12,6 +12,7 @@
     "postbuild": "node scripts/postbuild.cjs",
     "postinstall": "patch-package",
     "lint": "eslint .",
+    "test": "node --test tests/*.test.mjs",
     "preview": "vite preview"
   },
   "reactSnap": {
