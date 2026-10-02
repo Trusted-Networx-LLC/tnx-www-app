@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import Seo from './Seo';
 import HeroVideo from './HeroVideo';
-import MultiStepForm from './MultiStepForm';
 import {
   PRODUCTS,
   PRODUCT_ORDER,
@@ -11,6 +10,7 @@ import {
   ARA_CAPABILITIES,
   type ProductSlug,
 } from '../data/potsProducts';
+import CrmFormEmbed from './CrmFormEmbed';
 
 const SITE_URL = 'https://trustednetworx.com';
 
@@ -657,7 +657,7 @@ const ProductPage = ({ slug }: ProductPageProps) => {
             </div>
             <div className="col-span-12 lg:col-span-7">
               <div className="rounded-lg border border-divider bg-navy-900 p-8">
-                <MultiStepForm preset="pots" />
+                <CrmFormEmbed form="potsVoice" variant="bare" />
               </div>
             </div>
           </div>

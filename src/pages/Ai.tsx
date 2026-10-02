@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const sections = [
   { n: '01', to: '/ai-workforce', title: 'AI Workforce', desc: 'AI agents that sell, support, and monitor — 24/7, telecom-native, tenant-isolated.' },
@@ -186,6 +187,7 @@ const Ai = () => (
         </div>
       </div>
     </section>
+      <CrmFormEmbed form="ai" />
   </div>
 );
 

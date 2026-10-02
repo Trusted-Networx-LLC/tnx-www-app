@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
 import NodeField from '../components/NodeField';
-import MultiStepForm from '../components/MultiStepForm';
 import StatValue from '../components/StatValue';
 import ProductVideo from '../components/ProductVideo';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 /**
  * Stats strip (inside the navy hero band).
@@ -499,7 +499,7 @@ const Home = () => {
             </div>
             <div className="col-span-12 lg:col-span-7">
               <div className="rounded-lg border border-hairline bg-white p-8">
-                <MultiStepForm preset="home" />
+                <CrmFormEmbed form="contact" variant="bare" />
               </div>
             </div>
           </div>

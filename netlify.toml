@@ -492,7 +492,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com https://enhancedlines.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://webforms.pipedrive.com https://cdn.pipedriveassets.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://webforms.pipedrive.com https://enhancedlines.com https://tnxcrm.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 
 # --- Long-lived caching for fingerprinted build assets ---
 [[headers]]

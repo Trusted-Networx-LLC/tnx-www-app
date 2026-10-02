@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const ipPbx = [
   { n: '01', title: 'Advanced features', desc: 'Auto-attendant, call queuing, voicemail-to-email, call recording.' },
@@ -146,7 +146,7 @@ const VoiceSolutions = () => (
           </div>
           <div className="col-span-12 lg:col-span-7">
             <div className="rounded-lg border border-divider bg-navy-900 p-8">
-              <MultiStepForm preset="voice" />
+              <CrmFormEmbed form="potsVoice" variant="bare" />
             </div>
           </div>
         </div>
