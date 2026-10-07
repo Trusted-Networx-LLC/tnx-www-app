@@ -20,6 +20,7 @@ const STATIC_ROUTES = [
   { path: '/pots-replacement/90x2', priority: '0.8', changefreq: 'monthly' },
   { path: '/pots-replacement/90x5', priority: '0.7', changefreq: 'monthly' },
   { path: '/pots-replacement/ara', priority: '0.7', changefreq: 'monthly' },
+  { path: '/pots-replacement/pstn-sunset', priority: '0.8', changefreq: 'weekly' },
   { path: '/internet-connectivity', priority: '0.8', changefreq: 'monthly' },
   { path: '/voice-solutions', priority: '0.8', changefreq: 'monthly' },
   { path: '/mobility-solutions', priority: '0.8', changefreq: 'monthly' },

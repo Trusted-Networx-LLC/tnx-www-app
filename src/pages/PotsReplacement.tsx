@@ -115,6 +115,10 @@ const PotsReplacement = () => (
             <Link to="/tools/copper-sunset-risk" className="font-semibold text-brand-300 hover:text-brand-200">
               Copper Sunset Risk Assessment
             </Link>
+            ·{' '}
+            <Link to="/pots-replacement/pstn-sunset" className="font-semibold text-brand-300 hover:text-brand-200">
+              PSTN Sunset lookup: is your ZIP on the list?
+            </Link>
           </p>
         </div>
       </div>

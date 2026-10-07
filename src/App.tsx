@@ -15,6 +15,7 @@ import Pots90X1 from './pages/pots/Pots90X1';
 import Pots90X2 from './pages/pots/Pots90X2';
 import Pots90X5 from './pages/pots/Pots90X5';
 import PotsAra from './pages/pots/PotsAra';
+import PstnShutdownLookup from './pages/pots/PstnShutdownLookup';
 import AiConsulting from './pages/AiConsulting';
 import InternetConnectivity from './pages/InternetConnectivity';
 import MobilitySolutions from './pages/MobilitySolutions';
@@ -88,6 +89,7 @@ function App() {
               <Route path="/pots-replacement/90x2" element={<Pots90X2 />} />
               <Route path="/pots-replacement/90x5" element={<Pots90X5 />} />
               <Route path="/pots-replacement/ara" element={<PotsAra />} />
+              <Route path="/pots-replacement/pstn-sunset" element={<PstnShutdownLookup />} />
               <Route path="/ai-consulting" element={<AiConsulting />} />
               <Route path="/fleet-management" element={<Navigate to="/ai-consulting" replace />} />
               <Route path="/internet-connectivity" element={<InternetConnectivity />} />
