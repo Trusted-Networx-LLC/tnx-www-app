@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ChatWidget from './components/ChatWidget';
 import StickyCTA from './components/StickyCTA';
-import ExitIntentPopup from './components/ExitIntentPopup';
 import Home from './pages/Home';
 import About from './pages/About';
 import Team from './pages/Team';
@@ -114,7 +113,6 @@ function App() {
           <Footer />
           <ChatWidget />
           <StickyCTA />
-          <ExitIntentPopup />
         </div>
       </Router>
     </HelmetProvider>
