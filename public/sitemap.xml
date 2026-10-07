@@ -61,22 +61,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/pots-replacement</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://trustednetworx.com/tools/copper-sunset-risk</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://trustednetworx.com/tools/failover-readiness</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://trustednetworx.com/ai</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

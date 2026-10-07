@@ -502,7 +502,7 @@ function carterDeweyJsonLd() {
 }
 
 /**
- * WebApplication schema for the five free calculator/assessment pages.
+ * WebApplication schema for the three free assessment pages.
  * `name` is the page title without the " | TrustedNetworx" suffix; price is
  * "0" USD, matching the nav's "Free Tools" label.
  */
@@ -786,24 +786,15 @@ const ROUTE_PAGES = [
   {
     route: 'tools',
     title: 'Free Telecom Assessment Tools | TrustedNetworx',
-    description: 'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
+    description: 'Interactive tools to size your telecom position: copper sunset risk, business continuity readiness, and AI readiness.',
     jsonLd: [
       collectionPageJsonLd({
         name: 'Free Telecom Assessment Tools',
         route: 'tools',
         description:
-          'Interactive tools to size your telecom position: POTS replacement ROI, copper sunset risk, business continuity readiness, and AI automation readiness.',
+          'Interactive tools to size your telecom position: copper sunset risk, business continuity readiness, and AI readiness.',
       }),
       buildBreadcrumbList('tools'),
-    ],
-  },
-  {
-    route: 'tools/pots-roi-calculator',
-    title: 'POTS Replacement ROI Calculator | TrustedNetworx',
-    description: 'Size what your legacy POTS copper lines cost you today and model what a per-line cost reduction is worth. Interactive planning tool from TrustedNetworx.',
-    jsonLd: [
-      webApplicationJsonLd({ name: 'POTS Replacement ROI Calculator', route: 'tools/pots-roi-calculator' }),
-      buildBreadcrumbList('tools/pots-roi-calculator'),
     ],
   },
   {
@@ -822,15 +813,6 @@ const ROUTE_PAGES = [
     jsonLd: [
       webApplicationJsonLd({ name: 'Business Continuity Readiness Check', route: 'tools/failover-readiness' }),
       buildBreadcrumbList('tools/failover-readiness'),
-    ],
-  },
-  {
-    route: 'tools/ai-roi-calculator',
-    title: 'AI Automation ROI Calculator | TrustedNetworx',
-    description: 'Size what repetitive manual work costs your organization each year, then model what automating a share of it would be worth. Planning tool from TrustedNetworx.',
-    jsonLd: [
-      webApplicationJsonLd({ name: 'AI Automation ROI Calculator', route: 'tools/ai-roi-calculator' }),
-      buildBreadcrumbList('tools/ai-roi-calculator'),
     ],
   },
   {

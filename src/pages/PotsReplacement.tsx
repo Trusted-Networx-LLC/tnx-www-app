@@ -108,10 +108,6 @@ const PotsReplacement = () => (
           {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
           <p className="mt-6 text-sm text-navy-200">
             Free tools:{' '}
-            <Link to="/pots-replacement" className="font-semibold text-brand-300 hover:text-brand-200">
-              POTS Replacement ROI Calculator
-            </Link>{' '}
-            ·{' '}
             <Link to="/tools/copper-sunset-risk" className="font-semibold text-brand-300 hover:text-brand-200">
               Copper Sunset Risk Assessment
             </Link>

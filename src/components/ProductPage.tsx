@@ -131,8 +131,8 @@ const ProductPage = ({ slug }: ProductPageProps) => {
                   Get a line audit
                   <ArrowRight size={18} />
                 </a>
-                <Link to="/pots-replacement" className="btn-outline">
-                  Calculate your savings
+                <Link to="/tools/copper-sunset-risk" className="btn-outline">
+                  Check your copper sunset risk
                 </Link>
               </div>
             </div>

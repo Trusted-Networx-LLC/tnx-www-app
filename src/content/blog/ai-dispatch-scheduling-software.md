@@ -63,7 +63,7 @@ Measure five things, and start measuring before the software arrives so you have
 
 Then close the loop from the visit back into the record. A dispatch system is only as good as what it learns from the job it just closed, which is the same reason the [note has to land somewhere the next person will read it](/blog/ai-call-summary-crm).
 
-If you want the payback side of that case before you commit, the [AI ROI calculator](/ai) will take your own technician count and job volume rather than a vendor's assumption. And if the harder question is where AI belongs in your operation at all, start with [our work deploying AI for multi-site operators](/ai) before you start shopping for a dispatch product.
+If you want the payback side of that case before you commit, the [AI readiness assessment](/tools/ai-readiness) will take your own technician count and job volume rather than a vendor's assumption. And if the harder question is where AI belongs in your operation at all, start with [our work deploying AI for multi-site operators](/ai) before you start shopping for a dispatch product.
 
 ---
 
