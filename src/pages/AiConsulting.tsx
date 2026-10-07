@@ -102,11 +102,7 @@ const AiConsulting = () => (
           </div>
           {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
           <p className="mt-6 text-sm text-navy-200">
-            Free tools:{' '}
-            <Link to="/ai" className="font-semibold text-brand-300 hover:text-brand-200">
-              AI Automation ROI Calculator
-            </Link>{' '}
-            ·{' '}
+            Free tool:{' '}
             <Link to="/tools/ai-readiness" className="font-semibold text-brand-300 hover:text-brand-200">
               AI Readiness Assessment
             </Link>

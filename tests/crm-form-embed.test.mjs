@@ -81,9 +81,12 @@ test('the CSP allows the CRM to be framed', () => {
     frameSrc[1].split(/\s+/).includes('https://tnxcrm.com'),
     `frame-src must allow https://tnxcrm.com, got: ${frameSrc[1]}`,
   );
-  // The existing embeds must survive the edit.
-  for (const kept of ['https://webforms.pipedrive.com', 'https://enhancedlines.com']) {
-    assert.ok(frameSrc[1].includes(kept), `frame-src lost ${kept}`);
+  // The chat widget's embed must survive the edit.
+  assert.ok(frameSrc[1].includes('https://enhancedlines.com'), 'frame-src lost https://enhancedlines.com');
+  // One lead path (tnx-crm-bus#79): the unused Pipedrive web-forms loader is gone, so is its CSP.
+  assert.ok(!csp.includes('pipedrive'), 'the CSP must not allow Pipedrive any more');
+  for (const page of ['index.html', 'src/index.html']) {
+    assert.ok(!read(page).includes('pipedrive'), `${page} must not load the Pipedrive loader`);
   }
   assert.ok(!frameSrc[1].includes('*'), 'frame-src must not be widened with a wildcard');
 });
