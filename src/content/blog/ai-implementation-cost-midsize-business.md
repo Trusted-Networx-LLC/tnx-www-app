@@ -51,7 +51,7 @@ You do not need a large program to cover it. Name one owner. Give that owner a r
 2. **Separate one-time from recurring.** Integration and content work land before launch; usage and telephony bill every month after it.
 3. **Tie each usage line to a volume you can measure.** Calls answered, conversations resolved, minutes carried — the number you already have in your phone system is the one to use.
 4. **Price the exit before you price the entry.** Ask who owns the content, how the data comes back out, and what the system does on the last day of the contract.
-5. **Run your own volumes, not a vendor's example.** The [AI ROI calculator](/tools/ai-roi-calculator) is built to take your figures rather than an assumed one.
+5. **Run your own volumes, not a vendor's example.** The [AI ROI calculator](/ai) is built to take your figures rather than an assumed one.
 
 ---
 

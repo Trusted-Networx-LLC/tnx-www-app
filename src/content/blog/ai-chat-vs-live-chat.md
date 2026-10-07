@@ -36,7 +36,7 @@ For AI chat, it is what the platform and its usage cost you for the period, divi
 
 Two inputs are easy to leave out, and both change the answer. The first is the cost of automated resolutions that fail: a conversation the assistant closes and the customer reopens as a call or a ticket is not a saving, it is the same conversation with more steps. The second is the work of making your answers machine-readable in the first place — the content, the integrations, and the owner who keeps both current.
 
-Run those numbers on your own volumes rather than a vendor's, and run them per conversation. The [AI ROI calculator](/tools/ai-roi-calculator) is built to take your figures instead of an assumed one.
+Run those numbers on your own volumes rather than a vendor's, and run them per conversation. The [AI ROI calculator](/ai) is built to take your figures instead of an assumed one.
 
 ## How to Route Conversations Between the Two
 

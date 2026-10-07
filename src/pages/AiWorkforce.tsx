@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const agents = [
   { n: '01', title: 'AI Sales Agents', desc: 'Qualify inbound leads, nurture pipeline, draft proposals, surface highest-value accounts — 24/7.' },
@@ -72,7 +72,7 @@ const AiWorkforce = () => (
           {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
           <p className="mt-6 text-sm text-navy-200">
             Free tools:{' '}
-            <Link to="/tools/ai-roi-calculator" className="font-semibold text-brand-300 hover:text-brand-200">
+            <Link to="/ai" className="font-semibold text-brand-300 hover:text-brand-200">
               AI Automation ROI Calculator
             </Link>{' '}
             ·{' '}
@@ -194,7 +194,7 @@ const AiWorkforce = () => (
           </div>
           <div className="col-span-12 lg:col-span-7">
             <div className="rounded-lg border border-divider bg-navy-900 p-8">
-              <MultiStepForm preset="ai" />
+              <CrmFormEmbed form="ai" />
             </div>
           </div>
         </div>

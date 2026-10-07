@@ -78,18 +78,6 @@
     >
       Skip to main content
     </a>
-    <!--
-      Hidden static form so Netlify's build-time bots can detect the contact form.
-      The live React form (src/pages/Contact.tsx) posts to this same form name.
-    -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="text" name="title" />
-      <input type="text" name="company" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <textarea name="message"></textarea>
-    </form>
     <div id="root"></div>
     <!-- Pipedrive CRM webforms — connects contact form to Pipedrive leads.
          defer so it never blocks first paint. -->

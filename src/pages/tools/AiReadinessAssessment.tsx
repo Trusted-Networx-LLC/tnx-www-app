@@ -1,24 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import {
-  Brain,
-  ArrowRight,
-  CheckCircle2,
-  AlertTriangle,
-  XCircle,
-  Send,
-  Info,
-  TrendingUp,
-  Database,
-  FileText,
-  Users,
-  Zap,
-  Target,
-  Server,
-} from 'lucide-react';
+import { Brain, ArrowRight, CheckCircle2, AlertTriangle, XCircle, Info, TrendingUp, Database, FileText, Users, Zap, Target, Server } from 'lucide-react';
 import Seo from '../../components/Seo';
-import MultiStepForm from '../../components/MultiStepForm';
-
-const CRM_ENDPOINT = '/.netlify/functions/lead';
+import CrmFormEmbed from '../../components/CrmFormEmbed';
 
 interface Question {
   id: string;
@@ -238,45 +221,6 @@ const AiReadinessAssessment = () => {
 
   // Form state
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '' });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    try {
-      await fetch(CRM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          source: 'AI Readiness Assessment',
-          calculator_results: JSON.stringify({
-            totalScore,
-            readinessLevel: readinessLevel.label,
-            scores: Object.entries(scores).map(([id, score]) => ({
-              question: QUESTIONS.find((q) => q.id === id)?.label,
-              score,
-            })),
-            categoryScores,
-          }),
-        }),
-      });
-      setSubmitted(true);
-    } catch {
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   return (
     <div className="bg-navy-50">
@@ -484,7 +428,7 @@ const AiReadinessAssessment = () => {
                 </button>
               </div>
             ) : (
-              <MultiStepForm preset="ai" />
+              <CrmFormEmbed form="ai" />
             )}
           </div>
         </div>

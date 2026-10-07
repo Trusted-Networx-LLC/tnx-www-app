@@ -17,7 +17,7 @@ import CrmFormEmbed from '../components/CrmFormEmbed';
  *    tile is gone rather than softened.
  *  - "25+ Years in telecom" sat unattributed beside company stats, which read
  *    as the company's age. It is Carter's experience — the label now says so.
- *  - "50% Typical line-cost cut" contradicted /tools/pots-roi-calculator,
+ *  - "50% Typical line-cost cut" contradicted /pots-replacement,
  *    whose own defaults ($85 → $25) imply ~71%. It was briefly replaced by
  *    those two figures, and then removed entirely: the homepage leads with AI,
  *    a per-line price on it anchors every later negotiation, and Carter's real

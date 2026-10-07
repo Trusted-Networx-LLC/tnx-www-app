@@ -14,10 +14,8 @@ const solutionLinks = [
 // calculator. The Navbar's Resources dropdown is not in the prerendered HTML.
 const freeToolLinks = [
   { to: '/tools', label: 'All Free Tools' },
-  { to: '/tools/pots-roi-calculator', label: 'POTS Replacement ROI Calculator' },
   { to: '/tools/copper-sunset-risk', label: 'Copper Sunset Risk Assessment' },
   { to: '/tools/failover-readiness', label: 'Business Continuity Readiness Check' },
-  { to: '/tools/ai-roi-calculator', label: 'AI Automation ROI Calculator' },
   { to: '/tools/ai-readiness', label: 'AI Readiness Assessment' },
 ];
 
