@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { CRM_FORMS, crmFormUrl, type CrmFormKey } from '../lib/crm-forms';
+import { CRM_FORMS, crmFormUrl, type CrmFormContext, type CrmFormKey } from '../lib/crm-forms';
 
 type Props = {
   /** Which published CRM form to show. Never a raw URL — the URL is built in `lib/crm-forms`. */
@@ -14,6 +14,8 @@ type Props = {
   height?: number;
   /** Override the measured phone-width height for one placement. */
   heightPhone?: number;
+  /** Assessment answers and score to attach to the lead (see `CrmFormContext`). */
+  context?: CrmFormContext;
 };
 
 /**
@@ -36,9 +38,10 @@ export default function CrmFormEmbed({
   className = '',
   height,
   heightPhone,
+  context,
 }: Props) {
   const definition = CRM_FORMS[form];
-  const url = crmFormUrl(form);
+  const url = crmFormUrl(form, context);
 
   const style = {
     '--crm-form-height': `${height ?? definition.height}px`,

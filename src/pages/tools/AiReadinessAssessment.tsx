@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Brain, ArrowRight, CheckCircle2, AlertTriangle, XCircle, Info, TrendingUp, Database, FileText, Users, Zap, Target, Server } from 'lucide-react';
 import Seo from '../../components/Seo';
 import CrmFormEmbed from '../../components/CrmFormEmbed';
+import type { CrmFormContext } from '../../lib/crm-forms';
 
 interface Question {
   id: string;
@@ -207,6 +208,22 @@ const AiReadinessAssessment = () => {
     }
     return recs.slice(0, 6);
   }, [allAnswered, categoryScores]);
+
+  // Everything the visitor answered, so the CRM lead carries the questions, answers and score.
+  const crmContext = useMemo<CrmFormContext>(() => ({
+    v: 1,
+    tool: 'ai-readiness',
+    title: 'AI Readiness Assessment',
+    score: totalScore,
+    max: maxPossible,
+    band: readinessLevel.label,
+    scale: 'higher = more ready',
+    answers: QUESTIONS.map((q) => {
+      const picked = q.options.find((o) => o.score === scores[q.id]);
+      return { q: q.label, a: picked ? `${picked.label}: ${picked.desc}` : 'Not answered', points: picked?.score ?? 0, max: 4 };
+    }),
+    recommendations,
+  }), [totalScore, maxPossible, readinessLevel, scores, recommendations]);
 
   const handleSelect = (questionId: string, score: number) => {
     setScores((prev) => ({ ...prev, [questionId]: score }));
@@ -428,7 +445,7 @@ const AiReadinessAssessment = () => {
                 </button>
               </div>
             ) : (
-              <CrmFormEmbed form="ai" />
+              <CrmFormEmbed form="ai" context={crmContext} />
             )}
           </div>
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Shield, ArrowRight, CheckCircle2, AlertTriangle, XCircle, Wifi, Globe, CloudOff, Radio, Satellite, Cable, Info, Building2, Clock, FileText, ServerCrash } from 'lucide-react';
 import Seo from '../../components/Seo';
 import CrmFormEmbed from '../../components/CrmFormEmbed';
+import type { CrmFormContext } from '../../lib/crm-forms';
 
 const SITE_TIERS = [
   { value: '1', label: '1', score: 5 },
@@ -149,6 +150,23 @@ const FailoverReadiness = () => {
       },
     };
   }, [sites, backup, connection, downtime, drPlan]);
+
+  // Everything the visitor answered, so the CRM lead carries the questions, answers and score.
+  const crmContext = useMemo<CrmFormContext>(() => ({
+    v: 1,
+    tool: 'failover-readiness',
+    title: 'Business Continuity Readiness Check',
+    score: totalScore,
+    max: maxPossible,
+    band: category.label,
+    scale: 'higher = more risk',
+    answers: Object.values(factorResults).map((f) => ({
+      q: f.label,
+      a: f.value === '—' ? 'Not answered' : f.value,
+      points: f.score,
+      max: f.max,
+    })),
+  }), [totalScore, maxPossible, category, factorResults]);
 
   // Recommendations: pick top 2 worst factors
   const recommendations = useMemo(() => {
@@ -455,7 +473,7 @@ const FailoverReadiness = () => {
                 </button>
               </div>
             ) : (
-              <CrmFormEmbed form="potsVoice" />
+              <CrmFormEmbed form="potsVoice" context={crmContext} />
             )}
           </div>
         </div>
