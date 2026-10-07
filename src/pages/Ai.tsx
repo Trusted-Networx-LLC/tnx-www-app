@@ -12,7 +12,7 @@ const sections = [
 
 const tools = [
   { n: '01', to: '/tools/ai-readiness', title: 'AI Readiness Assessment', desc: 'Score your organization against the signals that predict a successful AI rollout.' },
-  { n: '02', to: '/tools/ai-roi-calculator', title: 'AI ROI Calculator', desc: 'Estimate the payback of putting AI agents on your quoting, support, and scheduling.' },
+  { n: '02', to: '/ai', title: 'AI ROI Calculator', desc: 'Estimate the payback of putting AI agents on your quoting, support, and scheduling.' },
 ];
 
 const posts = [
@@ -47,7 +47,7 @@ const Ai = () => (
           {/* Plain crawlable link line to the free tools (SEO pass 2026-09-10). */}
           <p className="mt-6 text-sm text-navy-200">
             Free tools:{' '}
-            <Link to="/tools/ai-roi-calculator" className="font-semibold text-brand-300 hover:text-brand-200">
+            <Link to="/ai" className="font-semibold text-brand-300 hover:text-brand-200">
               AI Automation ROI Calculator
             </Link>{' '}
             ·{' '}

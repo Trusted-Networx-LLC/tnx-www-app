@@ -60,7 +60,6 @@ const resources = [
   { to: '/blog', label: 'Blog', desc: 'Telecom & AI insights', icon: BookOpen },
   { to: '/tools', label: 'Free Tools', desc: 'ROI, risk & readiness assessments', icon: Wrench },
   { to: '/tools/ai-readiness', label: 'AI Readiness', desc: 'Free AI readiness assessment', icon: Wrench },
-  { to: '/tools/ai-roi-calculator', label: 'AI ROI Calculator', desc: 'Estimate your AI payback', icon: Wrench },
 ];
 
 const company = [

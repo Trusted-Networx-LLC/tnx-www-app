@@ -61,7 +61,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/tools/pots-roi-calculator</loc>
+    <loc>https://trustednetworx.com/pots-replacement</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -76,7 +76,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://trustednetworx.com/tools/ai-roi-calculator</loc>
+    <loc>https://trustednetworx.com/ai</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

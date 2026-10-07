@@ -1,26 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import {
-  AlertTriangle,
-  ArrowRight,
-  Shield,
-  Building2,
-  Flame,
-  PhoneCall,
-  Lock,
-  ShoppingCart,
-  Printer,
-  Siren,
-  DoorOpen,
-  MoreHorizontal,
-  CalendarSearch,
-  Gauge,
-  Send,
-  CheckCircle2,
-  Info,
-} from 'lucide-react';
+import { AlertTriangle, ArrowRight, Flame, PhoneCall, Lock, ShoppingCart, Printer, Siren, DoorOpen, MoreHorizontal, Gauge, Info } from 'lucide-react';
 import Seo from '../../components/Seo';
-
-const CRM_ENDPOINT = '/.netlify/functions/lead';
+import CrmFormEmbed from '../../components/CrmFormEmbed';
 
 const INDUSTRIES = [
   'Property Management',
@@ -131,13 +112,6 @@ const CopperSunsetRisk = () => {
     return Math.min(score, 100);
   }, [lineTier, selectedSystems, auditRecency]);
 
-  const maxPossible = useMemo(() => {
-    let max = 30; // max lines
-    for (const sys of SYSTEMS) max += sys.critical ? 10 : 3; // all systems
-    max += 25; // worst audit
-    return Math.min(max, 100);
-  }, []);
-
   const riskLevel = useMemo(() => {
     if (riskScore <= 25) return { label: 'Low', color: 'emerald', bg: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-500' };
     if (riskScore <= 50) return { label: 'Moderate', color: 'amber', bg: 'bg-amber-50', text: 'text-amber-700', ring: 'ring-amber-500' };
@@ -180,48 +154,6 @@ const CopperSunsetRisk = () => {
 
   // Form state
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '' });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setSubmitError(null);
-    try {
-      const res = await fetch(CRM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          source: 'Copper Sunset Risk Assessment',
-          calculator_results: JSON.stringify({
-            riskScore,
-            riskLevel: riskLevel.label,
-            lineTier,
-            systems: Array.from(selectedSystems),
-            industry,
-            auditRecency,
-            breakdown,
-          }),
-        }),
-      });
-      if (!res.ok) throw new Error(`Request failed (${res.status})`);
-      setSubmitted(true);
-    } catch {
-      setSubmitError("We couldn't send that just now. Please try again, or email sales@trustednetworx.com.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
 
   const industryNote = industry ? INDUSTRY_NOTES[industry] : null;
 
@@ -525,96 +457,8 @@ const CopperSunsetRisk = () => {
                   <ArrowRight size={18} />
                 </button>
               </div>
-            ) : submitted ? (
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-8 text-center">
-                <CheckCircle2 size={48} className="mx-auto text-emerald-500 mb-4" />
-                <h3 className="text-xl font-bold text-navy-900">Thank You!</h3>
-                <p className="mt-2 text-navy-600">
-                  Your risk assessment and contact details have been submitted. A TrustedNetworx
-                  specialist will reach out with a tailored mitigation plan within one business day.
-                </p>
-              </div>
             ) : (
-              <div className="surface-card p-6 sm:p-10">
-                <h3 className="text-xl font-extrabold text-navy-900 flex items-center gap-2">
-                  <Send size={20} className="text-brand-500" />
-                  Get Your Risk Mitigation Plan
-                </h3>
-                <p className="mt-1 text-sm text-navy-500">
-                  We'll include your risk assessment results — a specialist will review and prepare
-                  a tailored mitigation strategy.
-                </p>
-                <form onSubmit={handleSubmit} className="mt-6 space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Full Name *
-                      </label>
-                      <input
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="John Smith"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Email *
-                      </label>
-                      <input
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="john@company.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Phone
-                      </label>
-                      <input
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-navy-800 mb-1.5">
-                        Company *
-                      </label>
-                      <input
-                        name="company"
-                        required
-                        value={formData.company}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-navy-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition"
-                        placeholder="Acme Corp"
-                      />
-                    </div>
-                  </div>
-                  {submitError && (
-                    <p role="alert" className="mb-3 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
-                      {submitError}
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="btn-primary w-full sm:w-auto"
-                  >
-                    {submitting ? 'Submitting...' : 'Submit & Get Your Plan'}
-                    {!submitting && <ArrowRight size={18} />}
-                  </button>
-                </form>
-              </div>
+              <CrmFormEmbed form="potsVoice" />
             )}
           </div>
         </div>

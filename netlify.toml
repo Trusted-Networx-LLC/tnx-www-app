@@ -10,6 +10,32 @@
 
 # --- SEO 301 redirects (server-side, before the SPA fallback) ---
 # Old service page consolidated into Voice Solutions.
+# The two ROI calculators were retired 2026-10-02 (tnx-crm-bus#69): one lead path only — the CRM
+# web form embed. The URLs keep their rankings and any external link alive via a 301.
+[[redirects]]
+  from = "/tools/pots-roi-calculator/"
+  to = "/pots-replacement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/ai-roi-calculator/"
+  to = "/ai"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/pots-roi-calculator"
+  to = "/pots-replacement"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tools/ai-roi-calculator"
+  to = "/ai"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/ip-pbx"
   to = "/voice-solutions"
@@ -417,18 +443,6 @@
   force = true
 
 [[redirects]]
-  from = "/tools/pots-roi-calculator"
-  to = "/tools/pots-roi-calculator/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/tools/pots-roi-calculator/"
-  to = "/tools/pots-roi-calculator/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/tools/copper-sunset-risk"
   to = "/tools/copper-sunset-risk/index.html"
   status = 200
@@ -449,18 +463,6 @@
 [[redirects]]
   from = "/tools/failover-readiness/"
   to = "/tools/failover-readiness/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/tools/ai-roi-calculator"
-  to = "/tools/ai-roi-calculator/index.html"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/tools/ai-roi-calculator/"
-  to = "/tools/ai-roi-calculator/index.html"
   status = 200
   force = true
 

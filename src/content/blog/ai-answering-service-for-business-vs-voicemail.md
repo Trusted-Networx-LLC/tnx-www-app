@@ -77,7 +77,7 @@ Ask these before any demonstration, because the answers reveal the architecture 
 5. **How are recordings handled?** Ask the vendor to describe their consent and retention practice for your jurisdiction in writing, and get it before go-live rather than after.
 6. **Can I hear a call it resolved?** Not the scripted demonstration — a real one, end to end, with the handoff included.
 
-Which calls to automate first is the same question as which work to automate at all, so the [AI readiness checklist](/blog/ai-readiness-checklist-for-midsize-organizations) is a useful filter before you sit through vendor pitches. When you want the arithmetic behind those lost calls, [estimate the hours your team spends on repetitive work](/tools/ai-roi-calculator) — the phone is usually one of the largest line items. If you would rather see the whole picture first, our [AI for Business solutions](/ai) show where an answering layer sits alongside routing, call summaries, and dispatch.
+Which calls to automate first is the same question as which work to automate at all, so the [AI readiness checklist](/blog/ai-readiness-checklist-for-midsize-organizations) is a useful filter before you sit through vendor pitches. When you want the arithmetic behind those lost calls, [estimate the hours your team spends on repetitive work](/ai) — the phone is usually one of the largest line items. If you would rather see the whole picture first, our [AI for Business solutions](/ai) show where an answering layer sits alongside routing, call summaries, and dispatch.
 
 ---
 

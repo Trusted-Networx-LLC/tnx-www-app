@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo';
 import HeroVideo from '../components/HeroVideo';
-import MultiStepForm from '../components/MultiStepForm';
+import CrmFormEmbed from '../components/CrmFormEmbed';
 
 const fundamentals = [
   { n: '01', title: 'Reliability', desc: 'Primary circuits sized to the site, with LTE/5G failover that kicks in automatically.' },
@@ -144,7 +144,7 @@ const InternetConnectivity = () => (
           </div>
           <div className="col-span-12 lg:col-span-7">
             <div className="rounded-lg border border-divider bg-navy-900 p-8">
-              <MultiStepForm preset="connectivity" />
+              <CrmFormEmbed form="potsVoice" />
             </div>
           </div>
         </div>

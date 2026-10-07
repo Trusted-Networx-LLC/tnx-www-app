@@ -60,4 +60,4 @@ The organizations seeing the strongest results aren't the ones with the largest 
 
 ---
 
-**Curious what the numbers look like for your organization?** Try our [AI Automation ROI Calculator](/tools/ai-roi-calculator) — plug in your lead volume, support ticket count, and current costs, and see the projected impact of deploying AI agents across your telecom operations.
+**Curious what the numbers look like for your organization?** Try our [AI Automation ROI Calculator](/ai) — plug in your lead volume, support ticket count, and current costs, and see the projected impact of deploying AI agents across your telecom operations.
