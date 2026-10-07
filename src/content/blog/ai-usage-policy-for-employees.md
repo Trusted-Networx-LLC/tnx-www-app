@@ -34,7 +34,7 @@ Data is where most policies get vague and most incidents begin. Classify what th
 
 Two rules carry most of the weight.
 
-**The approved tool is the only tool for company data.** Not because a general-purpose chatbot is unsafe in the abstract, but because you cannot answer a customer's question about where their information went if you cannot name where it went. Consumer accounts also commonly use submitted content to improve models; a business tenant with retention controls does not.
+**The approved tool is the only tool for company data.** Not because a general-purpose chatbot is unsafe in the abstract, but because you cannot answer a customer's question about where their information went if you cannot name where it went. Before you approve a tool, read its terms on retention and on whether submitted content is used to train models, and write down what you found.
 
 **Retention is a policy decision, not a setting you discover later.** Decide whether prompts and outputs are retained, for how long, and who can read them. If the honest answer is "we don't know", that is the first item on the list. Working that out is the same exercise the [AI readiness checklist](/blog/ai-readiness-checklist-for-midsize-organizations) starts from: name the data you hold, then name who may touch it.
 
