@@ -34,6 +34,7 @@ const CRUMB_NAMES: Record<string, string> = {
   '90x2': '90X2',
   '90x5': '90X5',
   ara: 'Ara',
+  'pstn-sunset': 'PSTN Sunset',
 };
 
 /** Build a BreadcrumbList from the pathname (Home > Segment > Segment). */

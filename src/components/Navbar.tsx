@@ -41,6 +41,7 @@ const potsProducts = [
   { to: '/pots-replacement/90x2', label: '90X2', desc: '8 lines · LTE' },
   { to: '/pots-replacement/90x5', label: '90X5', desc: 'Modular · pre-order' },
   { to: '/pots-replacement/ara', label: 'Ara', desc: 'Device management' },
+  { to: '/pots-replacement/pstn-sunset', label: 'PSTN Sunset', desc: 'Copper shutdown lookup' },
 ];
 
 const telecom = [

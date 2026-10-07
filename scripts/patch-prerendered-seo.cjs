@@ -591,6 +591,15 @@ const ROUTE_PAGES = [
     ],
   },
   {
+    route: 'pots-replacement/pstn-sunset',
+    title: 'PSTN Sunset: Copper Shutdown Lookup by ZIP | TrustedNetworx',
+    description: 'Check if your ZIP code or city is on a carrier copper retirement or POTS discontinuance filing. See the carrier, wire center, and earliest shutoff date.',
+    jsonLd: [
+      webApplicationJsonLd({ name: 'PSTN Sunset Copper Shutdown Lookup', route: 'pots-replacement/pstn-sunset' }),
+      buildBreadcrumbList('pots-replacement/pstn-sunset'),
+    ],
+  },
+  {
     route: 'pots-replacement/90x1',
     heroPoster: '/media/hero-pots-poster.v2.jpg',
     heroImage: '/product/90x1-hero.v2.webp',

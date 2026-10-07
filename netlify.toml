@@ -299,6 +299,18 @@
   force = true
 
 [[redirects]]
+  from = "/pots-replacement/pstn-sunset"
+  to = "/pots-replacement/pstn-sunset/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pots-replacement/pstn-sunset/"
+  to = "/pots-replacement/pstn-sunset/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/ai"
   to = "/ai/index.html"
   status = 200
