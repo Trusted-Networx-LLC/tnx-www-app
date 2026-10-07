@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { AlertTriangle, ArrowRight, Flame, PhoneCall, Lock, ShoppingCart, Printer, Siren, DoorOpen, MoreHorizontal, Gauge, Info } from 'lucide-react';
 import Seo from '../../components/Seo';
 import CrmFormEmbed from '../../components/CrmFormEmbed';
+import type { CrmFormContext } from '../../lib/crm-forms';
 
 const INDUSTRIES = [
   'Property Management',
@@ -148,6 +149,33 @@ const CopperSunsetRisk = () => {
   }, [lineTier, selectedSystems, auditRecency]);
 
   const hasAnyInput = lineTier || selectedSystems.size > 0 || auditRecency;
+
+  // Everything the visitor answered, so the CRM lead carries the questions, answers and score.
+  const crmContext = useMemo<CrmFormContext>(() => {
+    const tier = LINE_TIERS.find((t) => t.value === lineTier);
+    const audit = AUDIT_TIERS.find((a) => a.value === auditRecency);
+    const chosen = SYSTEMS.filter((sys) => selectedSystems.has(sys.id));
+    return {
+      v: 1,
+      tool: 'copper-sunset-risk',
+      title: 'Copper Sunset Risk Assessment',
+      score: riskScore,
+      max: 100,
+      band: riskLevel.label,
+      scale: 'higher = more risk',
+      answers: [
+        { q: 'How many copper-dependent lines does your organization have?', a: tier?.label ?? 'Not answered', points: tier?.score ?? 0, max: 30 },
+        {
+          q: 'What systems rely on these lines?',
+          a: chosen.length ? chosen.map((sys) => (sys.critical ? `${sys.label} (critical)` : sys.label)).join(', ') : 'None selected',
+          points: breakdown[1].points,
+          max: breakdown[1].max,
+        },
+        { q: "What's your industry?", a: industry || 'Not answered' },
+        { q: 'When did you last audit your copper lines?', a: audit?.label ?? 'Not answered', points: audit?.score ?? 0, max: 25 },
+      ],
+    };
+  }, [lineTier, selectedSystems, industry, auditRecency, riskScore, riskLevel, breakdown]);
 
   // Risk gauge angle
   const gaugeAngle = useMemo(() => (riskScore / 100) * 270 - 135, [riskScore]);
@@ -458,7 +486,7 @@ const CopperSunsetRisk = () => {
                 </button>
               </div>
             ) : (
-              <CrmFormEmbed form="potsVoice" />
+              <CrmFormEmbed form="potsVoice" context={crmContext} />
             )}
           </div>
         </div>

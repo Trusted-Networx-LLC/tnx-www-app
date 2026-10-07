@@ -96,28 +96,19 @@ test('the iframe height is declared per breakpoint, not fixed', () => {
     'expected a phone-width iframe height');
 });
 
-test('the calculators keep the local lead function', () => {
-  // Carter's constraint: the forms move, the calculators do not. A calculator reaches the local
-  // function either directly (its own CRM_ENDPOINT) or through MultiStepForm, which posts to
-  // /.netlify/functions/lead — so the invariant is that BOTH routes still exist, not that every
-  // calculator names the endpoint itself.
-  assert.ok(existsSync(join(ROOT, 'netlify/functions/lead.mts')), 'lead.mts must still exist');
-  assert.ok(
-    read('src/components/MultiStepForm.tsx').includes('/.netlify/functions/lead'),
-    'MultiStepForm must still post to the local lead function',
-  );
-  for (const calc of [
+test('one lead path: assessment tools send their answers to the CRM form', () => {
+  // Since #54 every lead goes through a TNX CRM embed and the local lead function is gone.
+  // Each assessment tool must hand its questions, answers and score to the embed, or the CRM
+  // gets a contact with none of the context the visitor just gave us.
+  assert.ok(!existsSync(join(ROOT, 'netlify/functions/lead.mts')), 'lead.mts was retired in #54');
+  for (const tool of [
     'src/pages/tools/AiReadinessAssessment.tsx',
-    'src/pages/tools/AiRoiCalculator.tsx',
-    'src/pages/tools/PotsRoiCalculator.tsx',
     'src/pages/tools/CopperSunsetRisk.tsx',
     'src/pages/tools/FailoverReadiness.tsx',
   ]) {
-    const source = read(calc);
-    assert.ok(
-      source.includes('/.netlify/functions/lead') || source.includes('MultiStepForm'),
-      `${calc}: must keep a route to the local lead function`,
-    );
-    assert.ok(!source.includes('CrmFormEmbed'), `${calc}: the calculator keeps the local form`);
+    const src = read(tool);
+    assert.ok(!src.includes('/.netlify/functions/lead'), `${tool} must not post to the retired lead function`);
+    assert.match(src, /<CrmFormEmbed[^>]*context=\{crmContext\}/, `${tool} must pass its answers to the CRM form`);
   }
+  assert.match(read('src/lib/crm-forms.ts'), /\?ctx=/, 'crmFormUrl must carry the context as ?ctx=');
 });

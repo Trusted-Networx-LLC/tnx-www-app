@@ -63,7 +63,49 @@ export const CRM_FORMS: Readonly<Record<CrmFormKey, CrmFormDefinition>> = {
   },
 };
 
+/**
+ * What a visitor answered on one of the site's assessment tools, handed to the CRM form so the
+ * lead carries the questions, the answers and the score.
+ *
+ * Contract with TNX CRM (v1): the form URL gets `?ctx=<base64url(UTF-8 JSON of this object)>`.
+ * The CRM decodes it on submit, stores it on the lead (a note listing every question, answer and
+ * points, plus the total score and band), and uses it for the visitor's report email.
+ * It is visitor-controlled input: the CRM treats it as untrusted text, caps its size, and never
+ * lets it choose the tenant — the form id does that.
+ */
+export type CrmFormContext = {
+  v: 1;
+  /** Tool slug, e.g. "copper-sunset-risk". */
+  tool: string;
+  /** Human name of the tool. */
+  title: string;
+  score: number;
+  max: number;
+  /** The result band shown to the visitor, e.g. "High". */
+  band: string;
+  /** How to read the score, e.g. "higher = more risk". */
+  scale: string;
+  answers: { q: string; a: string; points?: number; max?: number }[];
+  /** The recommendations shown on the page, if any. */
+  recommendations?: string[];
+};
+
+const MAX_CTX_CHARS = 6000;
+
+function base64UrlJson(value: unknown): string {
+  const bytes = new TextEncoder().encode(JSON.stringify(value));
+  let binary = '';
+  bytes.forEach((b) => {
+    binary += String.fromCharCode(b);
+  });
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
 /** The public URL of a form. The only place a CRM form URL is built. */
-export function crmFormUrl(key: CrmFormKey): string {
-  return `${CRM_FORM_ORIGIN}/forms/${CRM_FORMS[key].id}`;
+export function crmFormUrl(key: CrmFormKey, context?: CrmFormContext): string {
+  const base = `${CRM_FORM_ORIGIN}/forms/${CRM_FORMS[key].id}`;
+  if (!context) return base;
+  const ctx = base64UrlJson(context);
+  // A URL that long would be refused somewhere along the way; drop the context rather than the lead.
+  return ctx.length > MAX_CTX_CHARS ? base : `${base}?ctx=${ctx}`;
 }
