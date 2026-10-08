@@ -156,7 +156,7 @@ const Partners = () => (
             </p>
           </div>
           <div className="col-span-12 lg:col-span-7">
-            <CrmFormEmbed form="contact" variant="bare" />
+            <CrmFormEmbed form="quick" variant="bare" />
           </div>
         </div>
       </div>

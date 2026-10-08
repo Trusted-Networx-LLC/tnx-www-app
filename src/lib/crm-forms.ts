@@ -19,7 +19,7 @@
 
 export const CRM_FORM_ORIGIN = 'https://tnxcrm.com';
 
-export type CrmFormKey = 'contact' | 'ai' | 'potsVoice';
+export type CrmFormKey = 'contact' | 'ai' | 'potsVoice' | 'quick';
 
 type CrmFormDefinition = {
   /** The published form's public id, exactly as it appears in `https://tnxcrm.com/forms/<id>`. */
@@ -60,6 +60,17 @@ export const CRM_FORMS: Readonly<Record<CrmFormKey, CrmFormDefinition>> = {
     blurb: 'Tell us about your sites and lines, and we will come back with a migration plan and pricing.',
     height: 1450,
     heightPhone: 2180,
+  },
+  // tnx-crm-bus#77 (migration 121): Carter's short form — full name, email, company required;
+  // phone, title, notes optional; nothing else. Heights are ESTIMATES from the contact form's
+  // measured 1111px less its three extra fields; measure on the live form (bus#82 task 0.9).
+  quick: {
+    id: 'a7c3e5f1-2b4d-4e6f-8a90-1c2d3e4f5a6b',
+    title: 'Contact TrustedNetworx',
+    heading: 'Talk to us',
+    blurb: 'Leave your details and the right person picks it up, usually the same business day.',
+    height: 900,
+    heightPhone: 1350,
   },
 };
 

@@ -499,7 +499,7 @@ const Home = () => {
             </div>
             <div className="col-span-12 lg:col-span-7">
               <div className="rounded-lg border border-hairline bg-white p-8">
-                <CrmFormEmbed form="contact" variant="bare" />
+                <CrmFormEmbed form="quick" variant="bare" />
               </div>
             </div>
           </div>
