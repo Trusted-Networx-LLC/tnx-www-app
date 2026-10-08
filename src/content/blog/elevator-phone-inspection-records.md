@@ -33,7 +33,7 @@ The fields do not have to be elaborate, but they do have to identify the car and
 
 ## Where Elevator Phone Records Break Down
 
-Four failures account for most thin or unusable files.
+Four failures make a file thin or unusable.
 
 **Testing and filing are different jobs.** The technician who runs the call is rarely the person who keeps the folder, so the result lives in an email or a vendor's portal that the building does not control. When the vendor changes, the history goes with them.
 
@@ -41,7 +41,7 @@ Four failures account for most thin or unusable files.
 
 **The answering location changed and nobody updated the file.** A monitoring vendor switch, a consolidation, or a change in front-desk hours all break the answer path while leaving the test log looking complete.
 
-**The line underneath changed hands.** Before an incumbent carrier removes or disables copper, it owes public notice under the Commission's network change rules, and [47 CFR § 51.325](https://www.ecfr.gov/current/title-47/section-51.325) defines a copper retirement as the removal or disabling of copper loops, subloops, or the feeder portion of those loops, or their replacement with fiber-to-the-home or fiber-to-the-curb loops. The notice is served on the interconnecting providers, not on the building whose phone hangs off the line, so the record is often the only place the change was noticed. [Elevator phones and the copper sunset](/blog/elevator-phone-copper-sunset-2026) works through that specific problem.
+**The line underneath changed hands.** Before an incumbent carrier removes or disables copper, it owes public notice under the Commission's network change rules, and [47 CFR § 51.325](https://www.ecfr.gov/current/title-47/section-51.325) defines a copper retirement as the removal or disabling of copper loops, subloops, or the feeder portion of those loops, or their replacement with fiber-to-the-home or fiber-to-the-curb loops. Under [§ 51.333](https://www.ecfr.gov/current/title-47/section-51.333), that notice goes to directly interconnecting carriers and, from October 15, 2026, 911 service providers, not to the building whose phone hangs off the line, so the record is often the only place the change was noticed. [Elevator phones and the copper sunset](/blog/elevator-phone-copper-sunset-2026) works through that specific problem.
 
 ## How a Cellular Upgrade Rewrites the Evidence
 
@@ -49,9 +49,9 @@ Replacing a copper path with a cellular communicator is an installation change, 
 
 Start a new record for the new device, with the device documentation, the listing information the manufacturer holds, and its own battery replacement date. Do not append the new device to a log that still names the old line.
 
-Test from inside the car, end to end. A test at the communicator proves the device transmits; it does not prove the call path from the cab, which is what the requirement covers.
+Test from inside the car, end to end. A test at the communicator proves the device transmits; it does not prove the call path from the cab, which is the path an inspection tests.
 
-Keep the last test record for the copper line and the carrier's retirement notice together. They tie the change to a date and a cause, and the filing side of that event runs on a federal schedule the building may never see. Under [47 CFR § 51.333](https://www.ecfr.gov/current/title-47/section-51.333), a copper retirement notice is deemed final on the 90th day after the Commission releases its public notice of the filing, or on the 15th day for copper facilities not being used to provision service to any customers.
+Keep the last test record for the copper line and the carrier's retirement notice together. They tie the change to a date and a cause, and the filing side of that event runs on a federal schedule the building may never see. Under [47 CFR § 51.333](https://www.ecfr.gov/current/title-47/section-51.333), as amended by FCC 26-19 effective October 15, 2026 ([91 FR 62334](https://www.federalregister.gov/documents/2026/10/01/2026-20192/wc-docket-nos-25-208-25-209-fcc-26-19-fr-id-370342-reducing-barriers-to-network-improvements-and)), the carrier must give direct notice of a planned copper retirement at least 90 days before implementation, or 15 days for copper not being used to provision services to any customers.
 
 ## Keeping the File Across a Portfolio
 
@@ -63,4 +63,4 @@ Two operational rules save the most trouble. Record the transport on every test,
 
 ---
 
-If your elevator phone records are thin, or the person who kept them has moved on, [our voice and life-safety team](/voice-solutions) can map what each site needs and what the file should contain. [Tell us how many cars you are responsible for](/contact) and we will start with the sites that still depend on a copper path.
+If your elevator phone records are thin, or the person who kept them has moved on, [our voice team](/voice-solutions) can map what each site needs and what the file should contain. [Tell us how many cars you are responsible for](/contact) and we will start with the sites that still depend on a copper path.
