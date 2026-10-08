@@ -445,7 +445,7 @@ const AiReadinessAssessment = () => {
                 </button>
               </div>
             ) : (
-              <CrmFormEmbed form="contact" context={crmContext} />
+              <CrmFormEmbed form="quick" context={crmContext} />
             )}
           </div>
         </div>

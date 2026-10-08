@@ -473,7 +473,7 @@ const FailoverReadiness = () => {
                 </button>
               </div>
             ) : (
-              <CrmFormEmbed form="potsVoice" context={crmContext} />
+              <CrmFormEmbed form="quick" context={crmContext} />
             )}
           </div>
         </div>

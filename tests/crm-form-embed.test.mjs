@@ -23,6 +23,7 @@ const PUBLISHED = {
   contact: 'b94a66e6-c983-4004-88e4-7a532ce98b76',
   ai: '602b1dfe-9e19-4647-9222-a0490a65361b',
   potsVoice: '8231e559-674b-48ed-af83-601e0cf004c9',
+  quick: 'a7c3e5f1-2b4d-4e6f-8a90-1c2d3e4f5a6b',
 };
 
 /** page -> form key that page must show. */
@@ -30,15 +31,19 @@ const PLACEMENTS = {
   'src/pages/Ai.tsx': 'ai',
   'src/pages/PotsReplacement.tsx': 'potsVoice',
   'src/pages/VoiceSolutions.tsx': 'potsVoice',
-  'src/pages/Contact.tsx': 'contact',
-  'src/pages/Partners.tsx': 'contact',
-  'src/pages/Home.tsx': 'contact',
+  'src/pages/Contact.tsx': 'quick',
+  'src/pages/Partners.tsx': 'quick',
+  'src/pages/Home.tsx': 'quick',
+  'src/pages/pots/PstnShutdownLookup.tsx': 'quick',
+  'src/pages/tools/FailoverReadiness.tsx': 'quick',
+  'src/pages/tools/AiReadinessAssessment.tsx': 'quick',
+  'src/pages/tools/CopperSunsetRisk.tsx': 'quick',
   'src/pages/Crm.tsx': 'contact',
   'src/pages/PartnerHub.tsx': 'contact',
   'src/components/ProductPage.tsx': 'potsVoice',
 };
 
-test('the three published form ids are the ones the site embeds', () => {
+test('the published form ids are the ones the site embeds', () => {
   const source = read('src/lib/crm-forms.ts');
   for (const [key, id] of Object.entries(PUBLISHED)) {
     assert.ok(source.includes(id), `${key}: expected the published form id ${id}`);

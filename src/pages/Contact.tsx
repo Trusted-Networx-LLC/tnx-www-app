@@ -55,7 +55,7 @@ const Contact = () => (
             <h2 className="font-display text-display-h2 font-semibold text-ink">Get in touch</h2>
             <p className="mt-2 text-body">Fill out the form below and we&apos;ll get back to you shortly.</p>
             <div className="mt-8">
-              <CrmFormEmbed form="contact" variant="bare" />
+              <CrmFormEmbed form="quick" variant="bare" />
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5">
