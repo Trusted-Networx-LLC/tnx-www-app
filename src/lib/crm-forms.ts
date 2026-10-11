@@ -19,7 +19,7 @@
 
 export const CRM_FORM_ORIGIN = 'https://tnxcrm.com';
 
-export type CrmFormKey = 'contact' | 'ai' | 'potsVoice' | 'quick';
+export type CrmFormKey = 'contact' | 'ai' | 'potsVoice' | 'quick' | 'partnerHub';
 
 type CrmFormDefinition = {
   /** The published form's public id, exactly as it appears in `https://tnxcrm.com/forms/<id>`. */
@@ -71,6 +71,19 @@ export const CRM_FORMS: Readonly<Record<CrmFormKey, CrmFormDefinition>> = {
     blurb: 'Leave your details and the right person picks it up, usually the same business day.',
     height: 900,
     heightPhone: 1350,
+  },
+  // tnx-crm-bus#95 — the Partner Hub Design Partner Program form. The public id is a FIXED
+  // literal in the CRM migration that creates the form (the migration-121 / bus#77 pattern), so
+  // it is knowable here BEFORE the form exists anywhere and is identical in every environment.
+  // Heights are ESTIMATES for a form that has not rendered yet; measure against the live form the
+  // first time it exists and replace both, the way the other four were measured.
+  partnerHub: {
+    id: '6fde8408-50d9-44a0-b77b-01d0fc315e24',
+    title: 'Partner Hub Design Partner Program application',
+    heading: 'Apply for the Design Partner Program',
+    blurb: 'Five partners in South Florida, ninety days, hands-on. Tell us about your business and Carter will set up the 20-minute look.',
+    height: 1400,
+    heightPhone: 2100,
   },
 };
 
