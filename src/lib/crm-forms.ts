@@ -15,6 +15,11 @@
  * width stacks the fields and each one's label wraps, so the form grows, but by how much is unknown
  * until a form actually renders in an embed. Tune these the first time one does — an under-estimate
  * clips the submit button, which the form itself cannot report because it is cross-origin.
+ *
+ * ONE EXCEPTION, and it is the model for the rest: `partnerHub` is measured at both breakpoints and
+ * as the embed actually renders it — framed, with the form page's own header hidden. Its form box
+ * turned out not to reflow at all (718px from 320 to 1280), so its phone value equals its desktop
+ * value. See the note on that entry, including the merge-order dependency the framed values carry.
  */
 
 export const CRM_FORM_ORIGIN = 'https://tnxcrm.com';
@@ -74,30 +79,40 @@ export const CRM_FORMS: Readonly<Record<CrmFormKey, CrmFormDefinition>> = {
   },
   // tnx-crm-bus#95 — the Partner Hub Design Partner Program form. The public id is a FIXED literal
   // in the CRM migration that creates the form (the migration-121 / bus#77 pattern), so it is the
-  // same in every environment. The form is LIVE — migration 128 was applied 2026-10-11.
+  // same in every environment. The form is LIVE: migration 128 was applied to production 2026-10-11.
   //
-  // MEASURED, not estimated. Puppeteer against https://tnxcrm.com/forms/<id>, 2026-10-11, full
-  // document height: 1111 at 1280, and flat 1131 across 414/390/360/320 — the form is
-  // single-column, so phone barely grows. (The ×1.5 phone estimate used elsewhere would have been
-  // ~950px too tall here.) Both values below are those measurements plus 20px of headroom.
+  // MEASURED on the live form, not estimated. Puppeteer against https://tnxcrm.com/forms/<id> on
+  // 2026-10-12, with the form serving SIX fields (full_name, company_name, email, phone, role_type,
+  // notes). County and the year-one client count were removed in the CRM form editor; that first
+  // attempt never saved because field removal returned 503 for every form — `replaceDefinitionGuarded`
+  // called `web_form_replace_definition` on the session client while migration 093 grants it to
+  // service_role only. Fixed by tnx-crm-app#193, removed after it deployed.
   //
-  // TWO RE-MEASURE TRIGGERS:
-  //   1. The live form currently serves EIGHT fields, six required. Carter removed County and
-  //      "How many clients would you put on it in year one" in the CRM form editor, but as of
-  //      2026-10-11 the served definition (cache-control: no-store, so it IS live) still returns
-  //      eight and both are still required. When his republish lands the form gets shorter and
-  //      both numbers come down.
-  //   2. tnx-crm-bus#95 task 1 hides the form page's own header while it is framed. That header is
-  //      the top 169px of the document, so every framed form shrinks by ~169px once it ships.
-  //      These values stay deliberately in the taller, with-header state: an iframe taller than
-  //      its content shows a little dead space, while one shorter clips the submit button.
+  // The form is single-column and does NOT reflow: its box measures 718px at 320, 360, 390, 414,
+  // 768, 1024 and 1280 alike. What varies with width is the form page's OWN header (96px of margin
+  // included at desktop, 168px at 360) — and that header is not rendered inside a frame.
+  //
+  // So both heights below are the FRAMED height with the header hidden: the page's own padding plus
+  // the form = 40 + 718 + 40 = 798, FLAT across every width measured, plus 40px of headroom.
+  //
+  // THE DEPENDENCY, stated plainly because it is a merge-order constraint: these values assume the
+  // header is NOT rendered inside the frame, which is tnx-crm-bus#95 task 1 (the CRM branding PR,
+  // tnx-crm-app#194). Until that is deployed the framed page still prints the header, so the same
+  // embed holds 894px (desktop) / 966px (phone) of content in an 838px box: it scrolls internally
+  // rather than clipping, but the submit button needs a scroll to reach. Deploy the CRM branding PR
+  // BEFORE this site PR — or, if the order has to be the other way round, re-measure in the
+  // with-header state instead of using these.
+  //
+  // Known limitation: a validation-error state (every required field failing at once) adds roughly
+  // 100px that this headroom does not cover. The frame scrolls for it, which is acceptable because
+  // the visitor is looking straight at the form when it happens.
   partnerHub: {
     id: '6fde8408-50d9-44a0-b77b-01d0fc315e24',
     title: 'Partner Hub Design Partner Program application',
     heading: 'Apply for the Design Partner Program',
     blurb: 'Five partners in South Florida, ninety days, hands-on. Tell us about your business and Carter will set up the 20-minute look.',
-    height: 1131,
-    heightPhone: 1151,
+    height: 838,
+    heightPhone: 838,
   },
 };
 
