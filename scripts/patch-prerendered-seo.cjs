@@ -593,7 +593,7 @@ const ROUTE_PAGES = [
   {
     route: 'pots-replacement/pstn-sunset',
     title: 'PSTN Sunset: Copper Shutdown Lookup by ZIP | TrustedNetworx',
-    description: 'Check if your ZIP code or city is on a carrier copper retirement or POTS discontinuance filing. See the carrier, wire center, and earliest shutoff date.',
+    description: 'Check if your ZIP code or city is on a carrier copper retirement or POTS discontinuance filing. See the carrier, wire center, and earliest date in the filing.',
     jsonLd: [
       webApplicationJsonLd({ name: 'PSTN Sunset Copper Shutdown Lookup', route: 'pots-replacement/pstn-sunset' }),
       buildBreadcrumbList('pots-replacement/pstn-sunset'),

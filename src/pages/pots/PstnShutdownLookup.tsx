@@ -64,7 +64,7 @@ const PstnShutdownLookup = () => {
     <div className="bg-navy-50">
       <Seo
         title="PSTN Sunset: Copper Shutdown Lookup by ZIP | TrustedNetworx"
-        description="Check if your ZIP code or city is on a carrier copper retirement or POTS discontinuance filing. See the carrier, wire center, and earliest shutoff date."
+        description="Check if your ZIP code or city is on a carrier copper retirement or POTS discontinuance filing. See the carrier, wire center, and earliest date in the filing."
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
@@ -89,13 +89,13 @@ const PstnShutdownLookup = () => {
                 PSTN Sunset
               </span>
               <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-                {'Is your area on the '}
-                <span className="text-brand-300">copper shutdown list?</span>
+                {'Is your area on a '}
+                <span className="text-brand-300">carrier's copper retirement list?</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg sm:text-xl text-navy-200">
                 Phone companies are retiring copper lines and ending traditional landline (POTS) service,
                 wire center by wire center. Search a ZIP code or city to see which carrier filed, what is
-                changing, and the earliest date service can be cut.
+                changing, and the earliest date in the carrier's filing.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <button type="button" onClick={scrollToForm} className="btn-primary">
