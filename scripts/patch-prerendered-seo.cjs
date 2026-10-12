@@ -741,20 +741,25 @@ const ROUTE_PAGES = [
   },
   {
     route: 'platforms/partner-hub',
-    heroPoster: '/media/hero-partner-hub-poster.v2.jpg',
-    title: 'TNX Partner Hub — AI Agent Management | TrustedNetworx',
-    description: 'Deploy, budget, monitor, and govern AI agents for sales, support, and operations from one multi-tenant hub. Built by an operator, for MSPs and resellers.',
+    // No heroPoster: this page's hero is a placeholder for the 2-minute screen recording Carter
+    // supplies (tnx-crm-bus#95) — the page renders no hero image, so preloading the old stock
+    // poster would pull an unused asset onto the LCP path.
+    title: 'Partner Hub — the control room for AI agents | Trusted Networx',
+    description: 'White-label AI agent management for MSPs and telecom partners. Every agent, every action, every approval, logged and under your brand. Five South Florida design partners.',
     jsonLd: [
       softwareAppJsonLd({
         name: 'TNX Partner Hub',
         description:
-          'AI agent management platform for MSPs and channel partners: deploy, budget, monitor, and govern AI agents from one multi-tenant hub.',
+          'White-label AI agent management for MSPs and telecom partners: every agent, every action, every approval, logged and under your brand.',
       }),
       faqPageJsonLd([
-        { q: 'Which AI models does it use?', a: 'Model-agnostic; default is a cost-optimized provider with the option to bring your own keys.' },
-        { q: 'Do I need developers?', a: 'No for blueprint agents. Yes for custom integrations, which we can build.' },
-        { q: 'Where does it run?', a: 'Dedicated VPS per client or shared multi-tenant, your choice.' },
-        { q: 'Is my client data isolated?', a: 'Yes — tenant isolation is enforced at the database layer, not just the UI.' },
+        { q: "Does the agent see my client's data?", a: "Only what the client's admin grants it, per workspace. Every read and write is logged. The agent acts with at most the permissions of the person who connected it, never more." },
+        { q: 'Can an agent send email on its own?', a: 'No. A person approves every send. The approval is logged. Send limits apply per agent.' },
+        { q: 'What happens when something goes wrong?', a: 'Stop one agent or all of them in one click. A paused agent cannot act until a person resumes it. A budget cap pauses it automatically.' },
+        { q: 'Which AI apps work with it?', a: 'Claude, ChatGPT and Codex sign in today. Runtime agents you build connect through the agent API.' },
+        { q: 'Microsoft or Google?', a: "Both. Microsoft 365 is live. Google Workspace is live; Google's app verification is in review." },
+        { q: 'Who owns the model spend?', a: 'During the cohort, we do, inside the caps. Pass-through or bring-your-own-key is decided before general availability.' },
+        { q: 'Is there a contract?', a: 'A 90-day design-partner agreement, then month to month at the locked rate.' },
       ]),
       buildBreadcrumbList('platforms/partner-hub'),
     ],

@@ -39,7 +39,7 @@ const PLACEMENTS = {
   'src/pages/tools/AiReadinessAssessment.tsx': 'quick',
   'src/pages/tools/CopperSunsetRisk.tsx': 'quick',
   'src/pages/Crm.tsx': 'contact',
-  'src/pages/PartnerHub.tsx': 'contact',
+  'src/pages/PartnerHub.tsx': 'partnerHub',
   'src/components/ProductPage.tsx': 'potsVoice',
 };
 

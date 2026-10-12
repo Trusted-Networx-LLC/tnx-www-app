@@ -19,7 +19,7 @@
 
 export const CRM_FORM_ORIGIN = 'https://tnxcrm.com';
 
-export type CrmFormKey = 'contact' | 'ai' | 'potsVoice' | 'quick';
+export type CrmFormKey = 'contact' | 'ai' | 'potsVoice' | 'quick' | 'partnerHub';
 
 type CrmFormDefinition = {
   /** The published form's public id, exactly as it appears in `https://tnxcrm.com/forms/<id>`. */
@@ -71,6 +71,33 @@ export const CRM_FORMS: Readonly<Record<CrmFormKey, CrmFormDefinition>> = {
     blurb: 'Leave your details and the right person picks it up, usually the same business day.',
     height: 900,
     heightPhone: 1350,
+  },
+  // tnx-crm-bus#95 — the Partner Hub Design Partner Program form. The public id is a FIXED literal
+  // in the CRM migration that creates the form (the migration-121 / bus#77 pattern), so it is the
+  // same in every environment. The form is LIVE — migration 128 was applied 2026-10-11.
+  //
+  // MEASURED, not estimated. Puppeteer against https://tnxcrm.com/forms/<id>, 2026-10-11, full
+  // document height: 1111 at 1280, and flat 1131 across 414/390/360/320 — the form is
+  // single-column, so phone barely grows. (The ×1.5 phone estimate used elsewhere would have been
+  // ~950px too tall here.) Both values below are those measurements plus 20px of headroom.
+  //
+  // TWO RE-MEASURE TRIGGERS:
+  //   1. The live form currently serves EIGHT fields, six required. Carter removed County and
+  //      "How many clients would you put on it in year one" in the CRM form editor, but as of
+  //      2026-10-11 the served definition (cache-control: no-store, so it IS live) still returns
+  //      eight and both are still required. When his republish lands the form gets shorter and
+  //      both numbers come down.
+  //   2. tnx-crm-bus#95 task 1 hides the form page's own header while it is framed. That header is
+  //      the top 169px of the document, so every framed form shrinks by ~169px once it ships.
+  //      These values stay deliberately in the taller, with-header state: an iframe taller than
+  //      its content shows a little dead space, while one shorter clips the submit button.
+  partnerHub: {
+    id: '6fde8408-50d9-44a0-b77b-01d0fc315e24',
+    title: 'Partner Hub Design Partner Program application',
+    heading: 'Apply for the Design Partner Program',
+    blurb: 'Five partners in South Florida, ninety days, hands-on. Tell us about your business and Carter will set up the 20-minute look.',
+    height: 1131,
+    heightPhone: 1151,
   },
 };
 
