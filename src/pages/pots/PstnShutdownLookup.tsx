@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin } from 'lucide-react';
 import Seo from '../../components/Seo';
 import CrmFormEmbed from '../../components/CrmFormEmbed';
+import HeroVideo from '../../components/HeroVideo';
 
 /**
  * PSTN / copper shutdown lookup.
@@ -79,8 +80,7 @@ const PstnShutdownLookup = () => {
 
       {/* Hero */}
       <section className="relative flex min-h-[420px] items-center overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-navy-950 via-navy-900 to-brand-900" />
-        <div className="absolute inset-0 z-0 bg-grid-dark bg-grid opacity-40" />
+        <HeroVideo name="hero-pstn-sunset" />
         <div className="relative z-10 w-full pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
