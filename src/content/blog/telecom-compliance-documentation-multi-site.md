@@ -23,7 +23,7 @@ For each site, a useful evidence file holds five things.
 
 **The test record.** The date of the last successful test, who performed it, what the test proved, and what the result was. A test nobody wrote down is a test you cannot produce later.
 
-**The carrier paperwork.** Retirement notices and the deadlines printed on them. These arrive by letter, often addressed to a person who left, and they are easy to lose before anyone acts on them.
+**The carrier paperwork.** Retirement notices and the deadlines printed on them. They arrive by letter: route each one to whoever owns the file today rather than to the name on the envelope, and log its deadline the day it arrives.
 
 **The acceptance record.** What the authority having jurisdiction asked for at the last sign-off, and what was provided. File it with the rest, so the next visit starts from the record rather than from a search.
 
@@ -51,7 +51,7 @@ The fix is a rule rather than a reminder: close out the part of the record that 
 
 Build the file to answer three questions, in order: what is installed, what has been tested recently, and who confirmed the test. A body of documentation that cannot answer those three in sequence is not usable during a site visit.
 
-For fire alarm communications, that means a supervised path and a test result — the NFPA 72 standard for fire alarm systems is where the supervision and testing requirement lives, and the [NFPA 72 free-access text](https://www.nfpa.org/codes-and-standards/nfpa-72-standard-development/72) is the primary source an inspector will point to.
+For fire alarm communications, the two records to hold are the path the signal travels and the most recent test result for that path. Keep the edition of the fire code your authority having jurisdiction enforces filed with the site, so the test record is read against the edition that governs the building.
 
 Where a site is still on copper, the carrier's retirement obligations and the notice deadline come from the FCC's rules on network change disclosure — [47 CFR 51.333](https://www.ecfr.gov/current/title-47/section-51.333) is the section that governs what a carrier must give you and when.
 
@@ -61,7 +61,7 @@ Notice what all three have in common. The requirement sits with the standard or 
 
 A portfolio-wide file needs a rhythm, not a project. Two habits carry it.
 
-Review the index on a fixed cadence — quarterly is enough for most portfolios, monthly for any site with an open carrier notice or a migration in flight. The review is short: walk the blank cells and chase them.
+Review the index on a fixed cadence — quarterly for a portfolio with no open notices, monthly for any site with a carrier notice or a migration in flight. The review is short: walk the blank cells and chase them.
 
 And keep the copper question visible, because it is the one change that arrives on someone else's schedule. [The copper sunset risk assessment](/tools/copper-sunset-risk) gives you a starting read on which sites still depend on lines that carriers are retiring, so the record set stays ahead of the notices instead of reacting to them.
 
