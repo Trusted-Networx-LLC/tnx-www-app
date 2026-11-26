@@ -23,7 +23,7 @@ For each site, a useful evidence file holds five things.
 
 **The test record.** The date of the last successful test, who performed it, what the test proved, and what the result was. A test nobody wrote down is a test you cannot produce later.
 
-**The carrier paperwork.** Retirement notices and the deadlines printed on them. They arrive by letter: route each one to whoever owns the file today rather than to the name on the envelope, and log its deadline the day it arrives.
+**The carrier paperwork.** Retirement notices and their deadlines: route each one to whoever owns the file today, and log its deadline the day it surfaces.
 
 **The acceptance record.** What the authority having jurisdiction asked for at the last sign-off, and what was provided. File it with the rest, so the next visit starts from the record rather than from a search.
 
